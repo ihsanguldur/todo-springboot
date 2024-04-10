@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: ihsanguldur
+      changes:
+        - sqlFile:
+            path: database/changelog/sql/01_users.sql
+  - changeSet:
+      id: 2
+      author: ihsanguldur
+      changes:
+        - sqlFile:
+            path: database/changelog/sql/02_todos.sql

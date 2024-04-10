@@ -1,0 +1,56 @@
+POSTGRES_URL: localhost
+POSTGRES_DB: todo_springboot
+POSTGRES_USERNAME: ihsanguldur
+POSTGRES_PASSWORD: 123456
+POSTGRES_PORT: 5432
+
+server:
+  port: 8080
+  shutdown: graceful
+
+logging:
+  level:
+    org.springframework:
+      web: DEBUG
+      security.oauth2: DEBUG
+    org.hibernate: WARN
+
+spring:
+  profiles:
+    default: local
+  application:
+    name: todo
+  data:
+    jpa:
+      repositories:
+        enabled: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRES_URL}:${POSTGRES_PORT}/${POSTGRES_DB}
+    username: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    enabled: true
+    change-log: classpath:database/changelog/changelog.yaml
+  threads:
+    virtual:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, shutdown, prometheus
+  endpoint:
+    shutdown:
+      enabled: true
+
+springdoc:
+  swagger-ui:
+    tags-sorter: alpha
+  writer-with-order-by-keys: true
+
