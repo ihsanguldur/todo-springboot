@@ -1,5 +1,6 @@
 package com.serphenix.todo.modules.todo.entity;
 
+import com.serphenix.todo.modules.user.entity.Users;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,4 +32,8 @@ public class Todos {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private Users user;
 }

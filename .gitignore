@@ -34,3 +34,4 @@ build/
 sendgrid.env
 
 notes
+**/.DS_Store
