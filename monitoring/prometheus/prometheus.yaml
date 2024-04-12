@@ -2,10 +2,6 @@ scrape_configs:
   - job_name: 'SpringMonitoringApplication'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 3s
-    # TODO remove this one after security
-    basic_auth:
-      username: 'admin'
-      password: 'admin'
     static_configs:
       - targets: ['host.docker.internal:8080']
         labels:

@@ -39,11 +39,6 @@ spring:
   threads:
     virtual:
       enabled: true
- # TODO remove this one after security
-  security:
-    user:
-      name: admin
-      password: admin
 
 management:
   endpoints:
