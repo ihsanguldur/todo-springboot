@@ -22,9 +22,7 @@ public class TodoService {
 
     private final UserRepository userRepository;
 
-    public TodoDto createTodo(@Valid TodoCreateRequest request) {
-        // TODO change after security
-        String username = "ihsanguldur";
+    public TodoDto createTodo(@Valid TodoCreateRequest request, String username) {
         Users user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UserNotFoundException(String.format("user not found with username %s", username)));
 

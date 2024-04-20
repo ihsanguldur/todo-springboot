@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 
 @Tag(name = "Todo API", description = "Todo Service API for todo related operations")
@@ -28,5 +29,5 @@ public interface TodoAPI {
             @ApiResponse(responseCode = "403", description = "forbidden", content = @Content(schema = @Schema(implementation = ApiErrorResponse.class))),
             @ApiResponse(responseCode = "405", description = "method not allowed", content = @Content(schema = @Schema(implementation = ApiErrorResponse.class))),
     })
-    Response<TodoDto> create(@RequestBody TodoCreateRequest request);
+    Response<TodoDto> create(@RequestHeader("Authorization") String bearerToken, @RequestBody TodoCreateRequest request);
 }
